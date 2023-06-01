@@ -1,0 +1,4 @@
+create hard link: ln target pointer(i call it pointer cuz it "points" idk
+if the implementation uses memory pointers or not)
+
+create soft link: ln -s target pointer

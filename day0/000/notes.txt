@@ -1,0 +1,8 @@
+to tar: tar -cf filename.tar file-to-tar
+to untar: tar -xvf tar-file.tar
+
+to change permissions: chmod 
+
+to change timestamp: touch -t YYYYMMDDHHMM file 
+
+to edit file size: truncate

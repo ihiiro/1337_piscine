@@ -1,0 +1,10 @@
+find files and evaluate an expression on each match:
+
+example: find . -type f \( -name '*.c' -o -name '*.h' \) -print -a -delete
+
+parentheses are required for the find command (something to do with 
+precedence). They are required if you want the expressions to be evaluated 
+on all matches.
+
+bonus: -a and -o stand for logical AND and logical OR respectively.
+-print, -delete are called expressions.

@@ -1,0 +1,3 @@
+cut output: cut 
+
+translate output portion: tr 'portion' 'insertion'

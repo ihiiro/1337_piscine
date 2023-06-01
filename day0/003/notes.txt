@@ -1,0 +1,5 @@
+difference between two files: diff a b
+
+patch a file (edit it to match another): patch file-to-patch PATCH-FILE
+
+NOTE: a PATCH-FILE is whatever file contains the output of the diff command.
