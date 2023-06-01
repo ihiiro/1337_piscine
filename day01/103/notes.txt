@@ -1,0 +1,5 @@
+no coloring: grep --color=never
+
+print matched only: grep -o
+
+use regular expressions: grep -P
