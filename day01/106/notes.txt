@@ -1,0 +1,12 @@
+stop at delimiter ':' -> awk -F:
+
+reverse input string: rev 
+
+sort in reverse alphabetical order: sort -r 
+
+output from line x to line y: sed -n "x, yp"
+
+use regex with sed: sed 's/'
+
+NOTE: env vars can be used with sed to dynamically insert lines
+      in that case, space the p: "var1, var2 p"
