@@ -22,16 +22,22 @@ void ft_print_combn(int n)
 	// create array and initialize end to 1
 	char combinations[n];
 	int done = 0;
+	int i;
+	int j;
 	// fill array with all '0's then last digit to '1'
-	for (int i = 0; i < n; i++)
+	i = 0;
+	while (i < n)
 	{
 		combinations[i] = (i == (n - 1)) ? '1' : '0';
+		i++;
 	}
 	void display()
 	{
-		for (int i = 0; i < n; i++)
+		int i = 0;
+		while (i < n)
 		{
 			ft_putchar(combinations[i]);
+			i++;
 		}
 		if (!done)
 		{
@@ -47,7 +53,8 @@ void ft_print_combn(int n)
 		{
 			return;
 		}
-		for (int i = n - 2; i >= 0; i--)
+		i = n - 2;
+		while (i >= 0)
 		{
 			if (combinations[n - 1] == '9')
 			{
@@ -55,12 +62,15 @@ void ft_print_combn(int n)
 				if (combinations[i] != combinations[i + 1] - 1)
 				{
 					combinations[i]++;
-					for (int j = i + 1; j < n; j++)
+					j = i + 1;
+					while (j < n)
 					{
 						combinations[j] = combinations[j - 1] + 1;
+						j++;
 					}
 				}
 			}
+			i--;
 		}
 		// increment the last digit on the right
 		if (combinations[n - 1] + 1 == ':')
