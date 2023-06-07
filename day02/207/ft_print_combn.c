@@ -9,7 +9,7 @@ void ft_print_combn(int n);
 
 int main()
 {
-  ft_print_combn(9);
+  ft_print_combn(10);
 }
 
 void ft_print_combn(int n)
@@ -21,7 +21,8 @@ void ft_print_combn(int n)
 	}
 	// create array and initialize end to 1
 	char combinations[n];
-	// fill array with all 0s
+	int done = 0;
+	// fill array with all '0's then last digit to '1'
 	for (int i = 0; i < n; i++)
 	{
 		combinations[i] = (i == (n - 1)) ? '1' : '0';
@@ -32,12 +33,16 @@ void ft_print_combn(int n)
 		{
 			ft_putchar(combinations[i]);
 		}
-		ft_putchar(',');
-		ft_putchar(' ');
+		if (!done)
+		{
+			ft_putchar(',');
+			ft_putchar(' ');
+		}
 	}
 	// iterative function
 	void iter(int n)
 	{
+		// base case and handling of commas
 		if (combinations[n - 1] == ':')
 		{
 			return;
@@ -56,6 +61,11 @@ void ft_print_combn(int n)
 					}
 				}
 			}
+		}
+		// increment the last digit on the right
+		if (combinations[n - 1] + 1 == ':')
+		{
+			done = 1;
 		}
 		// display digits
 		display();
