@@ -29,6 +29,14 @@ void ft_print_combn(int n)
 	while (i < n)
 	{
 		combinations[i] = (i == (n - 1)) ? '1' : '0';
+		if (i == (n - 1))
+		{
+			combinations[i] == '1';
+		}
+		else
+		{
+			combinations[i] == '0';
+		}
 		i++;
 	}
 	void display()
