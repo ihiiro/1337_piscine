@@ -2,6 +2,16 @@
 
 void ft_sort_integer_table(int *tab, int size);
 
+int main(void)
+{
+  int arr[] = {234, 23, 22, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2};
+  ft_sort_integer_table(arr, 13);
+  for (int i = 0; i < 13; i++)
+  {
+    printf("%d, ", arr[i]);
+  }
+}
+
 // O(n^2) time complexity
 void ft_sort_integer_table(int *tab, int size)
 {
@@ -18,7 +28,7 @@ void ft_sort_integer_table(int *tab, int size)
 
   int i = 0;
   int j = 0;
-  while (i < size * size)
+  while (i < size)
   {
     j = 0;
     while (j < size)
