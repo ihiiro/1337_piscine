@@ -1,53 +1,11 @@
-#include <unistd.h>
-
-void ft_putchar(char c)
-{
-  write(1, &c, 1);
-}
-
-void ft_putnbr(int nb)
-{
-  if (nb == 0)
-  {
-    ft_putchar('0');
-    return;
-  }
-  int nbr = nb;
-  if (nbr < 0)
-  {
-    ft_putchar('-');
-    nbr *= -1;
-  }
-  int arr[10];
-  for (int i = 10; i > 0; i--)
-  {
-    arr[i] = nbr % 10;
-    nbr /= 10;
-  }
-
-  for (int i = 0, bool = 0; i <= 10; i++)
-  {
-    if (!bool)
-    {
-      if (arr[i] > 0)
-      {
-        bool = 1;
-        ft_putchar(48 + arr[i]);
-      }
-    }
-    else
-    {
-      ft_putchar(48 + arr[i]);
-    }
-  }
-}
+#include <stdio.h>
 
 int ft_atoi(char *str);
 
 int main(void)
 {
-  char *str = "jdslfjfs333343";
-  ft_putnbr(ft_atoi(str));
+  char *str = "-100090-00-fdsjfljsfsdjf233";
+  printf("%d", ft_atoi(str));
 }
 
 int ft_atoi(char *str)
