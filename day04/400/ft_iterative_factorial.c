@@ -18,12 +18,12 @@ int ft_iterative_factorial(int nb)
   {
     return 0;
   }
-  int i = nb;
+  // int i = nb;
   int fact = 1;
-  while (i != 0)
+  while (nb != 0)
   {
-    fact *= i;
-    i--;
+    fact *= nb;
+    nb--;
   }
 
   return fact;
