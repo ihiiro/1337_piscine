@@ -10,7 +10,7 @@ SRQ
 
 function should take void and return int ... OK
 
-function to reinitialize start position ... OK
+function initialize position of first queen ... OK
 
 function that does first init of all queens (to eliminate possible undefined behaviour) ... OK
 
