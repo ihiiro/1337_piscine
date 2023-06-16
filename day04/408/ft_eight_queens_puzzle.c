@@ -1,65 +1,68 @@
 #include <stdio.h>
 
+struct queen
+{
+  char col;
+  int row;
+};
+typedef struct queen Queen;
+
 int ft_eight_queens_puzzle(void);
-int checker(int board[][8], int i, int j, int row_occupied, int column_occupied, int k);
-int check(int board[][8]);
+int enumerate(Queen *queens, Queen init_pos, int solution_nbr);
+void init(Queen *queens, Queen pos);
+void init_init(Queen *queens, int i);
 
 int main(void)
 {
-  printf("%d", ft_eight_queens_puzzle());
+  // printf("%d", ft_eight_queens_puzzle());
+  ft_eight_queens_puzzle();
 }
 
 int ft_eight_queens_puzzle(void)
 {
-  int board[8][8] =
-  {
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 1}
-  };
+  Queen queens[8];
 
-  return check(board);
-}
+  init_init(queens, 0);
 
-int checker(int board[][8], int i, int j, int row_occupied, int column_occupied, int k)
-{
-  if (i > 7)
+  int i = 0;
+  while (i < 8)
   {
-    return 1;
+    printf("Q%c%d\n", queens[i].col, queens[i].row);
+    i++;
   }
 
-  // check rows
-  while (j < 8)
-  {
-    k = 0;
-    column_occupied = 0;
-    row_occupied += board[i][j];
-    if (row_occupied > 1)
-    {
-      return 0;
-    }
-    // check columns
-    while (k < 8)
-    {
-      column_occupied += board[k][j];
-      if (column_occupied > 1)
-      {
-        return 0;
-      }
-      k++;
-    }
-    j++;
-  }
-
-  checker(board, i + 1, 0, 0, 0, 0);
+  return 0;
 }
 
-int check(int board[][8])
+int enumerate(Queen *queens, Queen init_pos, int solution_nbr)
 {
-  return checker(board, 0, 0, 0, 0, 0);
+  if (!queens)
+  {
+    return -1;
+  }
+  else if (init_pos.col == 'h' && init_pos.row == 8)
+  {
+    return solution_nbr;
+  }
+
+}
+
+void init(Queen *queens, Queen pos)
+{
+  if (!queens)
+  {
+    return;
+  }
+  queens[0] = pos;
+}
+
+void init_init(Queen *queens, int i)
+{
+  if (!queens || i == 8)
+  {
+    return;
+  }
+  queens[i].col = 'a';
+  queens[i].row = 1;
+  init_init(queens, i + 1);
 }
