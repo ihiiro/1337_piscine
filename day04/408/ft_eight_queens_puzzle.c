@@ -1,68 +1,70 @@
 #include <stdio.h>
 
-struct queen
+struct Queen
 {
+  char row;
   char col;
-  int row;
 };
-typedef struct queen Queen;
+typedef struct Queen queen;
 
-int ft_eight_queens_puzzle(void);
-int enumerate(Queen *queens, Queen init_pos, int solution_nbr);
-void init(Queen *queens, Queen pos);
-void init_init(Queen *queens, int i);
+void update_if_prev_overflow(queen *arr, int index, int cascade);
 
 int main(void)
 {
-  // printf("%d", ft_eight_queens_puzzle());
-  ft_eight_queens_puzzle();
-}
+  queen arr[8];
+  arr[0].row = '8';
+  arr[0].col = 'h';
+  arr[1].row = '8';
+  arr[1].col = 'h';
+  arr[2].row = '8';
+  arr[2].col = 'h';
+  arr[3].row = '2';
+  arr[3].col = 'c';
+  arr[4].row = '5';
+  arr[4].col = 'f';
 
-int ft_eight_queens_puzzle(void)
-{
-  Queen queens[8];
-
-  init_init(queens, 0);
-
-  int i = 0;
-  while (i < 8)
+  for (int i = 0; i < 5; i++)
   {
-    printf("Q%c%d\n", queens[i].col, queens[i].row);
-    i++;
+    printf("Q%c%c, ", arr[i].col, arr[i].row);
   }
 
-  return 0;
+  printf("\n\n");
+  update_if_prev_overflow(arr, 3, 0);
+
+  for (int i = 0; i < 5; i++)
+  {
+    printf("Q%c%c, ", arr[i].col, arr[i].row);
+  }
 }
 
-int enumerate(Queen *queens, Queen init_pos, int solution_nbr)
+void update_if_prev_overflow(queen *arr, int index, int cascade)
 {
-  if (!queens)
-  {
-    return -1;
-  }
-  else if (init_pos.col == 'h' && init_pos.row == 8)
-  {
-    return solution_nbr;
-  }
-
-}
-
-void init(Queen *queens, Queen pos)
-{
-  if (!queens)
+  if (!arr || index < 0)
   {
     return;
   }
-  queens[0] = pos;
-}
-
-void init_init(Queen *queens, int i)
-{
-  if (!queens || i == 8)
+  if (arr[index - 1].col == 'h' && arr[index - 1].row == '8')
   {
-    return;
+    if (arr[index].row < '8')
+    {
+      arr[index].row++;
+    }
+    else if (arr[index].row == '8' && arr[index].col < 'h')
+    {
+      arr[index].row = '1';
+      arr[index].col++;
+    }
+    else if (arr[index].row == '8' && arr[index].col == 'h')
+    {
+      arr[index].row = '1';
+      arr[index].col = 'a';
+    }
+    update_if_prev_overflow(arr, index - 1, 1);
   }
-  queens[i].col = 'a';
-  queens[i].row = 1;
-  init_init(queens, i + 1);
+  else if (cascade)
+  {
+    arr[index].col = 'a';
+    arr[index].row = '1';
+    update_if_prev_overflow(arr, index - 1, cascade);
+  }
 }
