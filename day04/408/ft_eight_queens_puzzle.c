@@ -8,33 +8,36 @@ struct Queen
 typedef struct Queen queen;
 
 void update_if_prev_overflow(queen *arr, int index, int cascade);
+void init(queen *arr, int index);
 
 int main(void)
 {
   queen arr[8];
-  arr[0].row = '8';
-  arr[0].col = 'h';
-  arr[1].row = '8';
-  arr[1].col = 'h';
-  arr[2].row = '8';
-  arr[2].col = 'h';
-  arr[3].row = '2';
-  arr[3].col = 'c';
-  arr[4].row = '5';
-  arr[4].col = 'f';
+  init(arr, 7);
 
-  for (int i = 0; i < 5; i++)
+  for (int i = 0; i < 8; i++)
   {
     printf("Q%c%c, ", arr[i].col, arr[i].row);
   }
 
   printf("\n\n");
-  update_if_prev_overflow(arr, 3, 0);
+  update_if_prev_overflow(arr, 7, 0);
 
-  for (int i = 0; i < 5; i++)
+  for (int i = 0; i < 8; i++)
   {
     printf("Q%c%c, ", arr[i].col, arr[i].row);
   }
+}
+
+void init(queen *arr, int index)
+{
+  if (!arr || index < 0)
+  {
+    return;
+  }
+  arr[index].col = 'a';
+  arr[index].row = '1';
+  init(arr, index - 1);
 }
 
 void update_if_prev_overflow(queen *arr, int index, int cascade)

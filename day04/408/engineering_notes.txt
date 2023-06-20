@@ -1,23 +1,17 @@
-DTP
+DTP 
 
-I need a function that will take void and return the number of possible solutions to the 8 queens puzzle
+I need a function that takes void and returns the number of solutions to the 8 queens puzzle
 
 DBR
-
-no rows, no columns, no diagonals, 8 queens
+...
 
 SRQ
 
-function should take void and return int ... OK
-
-function initialize position of first queen ... OK
-
-function that does first init of all queens (to eliminate possible undefined behaviour) ... OK
-
-code to place the 8 queens ...
-	algorithm that abides by puzzle rules ...
-		code that places 1 queen per row ... 
-		code that places 1 queen per column ...
-		code that places 1 queen per diagonal ... 
-		
-count if 8 queens are all placed and rules met ...
+code to enumerate all possibilities ... 
+	init() ... OK
+	create queen type ... OK
+	update_if_prev_overflow() ... SEEMS OK
+	enumeration clock ... 
+	global base case... 
+	
+BEC
