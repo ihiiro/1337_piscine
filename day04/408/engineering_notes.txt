@@ -8,8 +8,11 @@ http://www.datagenetics.com/blog/august42012/
 
 SRQ
 
-efficient data structure ... SEEMS OK
-init all queens to a1 ... OK
+efficient data structure ... SEEMS_OK
+init all queens to a1 ... OK_MAY_REMOVE
+survey ... ALMOST_OK
+ survey_cols() ... SEEMS_OK
+ survey_diagonals() ... SEEMS_OK
 
 BEC
 
