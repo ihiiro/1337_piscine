@@ -10,8 +10,6 @@ SRQ
 efficient data structure ... SEEMS OK
 init all queens to a1 ... OK
 
-
-
 BEC
 
 START
