@@ -1,17 +1,24 @@
 DTP 
 
-I need a function that takes void and returns the number of solutions to the 8 queens puzzle
+I need a function that takes void and returns the number of possible solutions to the 8 queens puzzle
 
 DBR
-...
+https://code.energy/8-queens-problem/
 
 SRQ
 
-code to enumerate all possibilities ... 
-	init() ... OK
-	create queen type ... OK
-	update_if_prev_overflow() ... SEEMS OK
-	enumeration clock ... 
-	global base case... 
-	
+efficient data structure ... SEEMS OK
+init all queens to a1 ... OK
+
+
+
 BEC
+
+START
+ queen[0] <- a1
+ LOOP START
+  if (row_unsafe)
+   backrack()
+  survey_and_place()
+ LOOP END
+END
