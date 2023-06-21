@@ -4,6 +4,7 @@ I need a function that takes void and returns the number of possible solutions t
 
 DBR
 https://code.energy/8-queens-problem/
+http://www.datagenetics.com/blog/august42012/
 
 SRQ
 
@@ -12,11 +13,19 @@ init all queens to a1 ... OK
 
 BEC
 
+survey(queens, index, i)
+ check from queens[0] to queens[index-1]
+ 
+diagonal(queens, index, i, col, row)
+ check current diagonal position against queens[0] to queens[index-1]
+
+-------------------
 START
  queen[0] <- a1
  LOOP START
   if (row_unsafe)
-   backrack()
+   backtrack()
   survey_and_place()
  LOOP END
 END
+--------------------
