@@ -9,12 +9,12 @@ http://www.datagenetics.com/blog/august42012/
 SRQ
 
 efficient data structure ... SEEMS_OK
-init all queens to a1 ... REMOVE
 init each queen to 1st col on unique row ... OK
 survey() ... OK
  survey_cols() ... OK
  survey_diagonals() ... OK
-
+abstract init ... OK
+ 
 BEC
 
 survey(queens, index, i)

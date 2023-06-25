@@ -7,7 +7,8 @@ struct queen
 };
 typedef struct queen queen;
 
-void init(queen *arr, int index, char row);
+void init_init(queen *arr, int index, char row);
+void init(queen *arr);
 int survey_cols(queen *arr, int index, int i);
 int survey_diagonals(queen *arr, int index, int i, char col, char row, int flp);
 int survey(queen *arr, int index);
@@ -15,8 +16,8 @@ int survey(queen *arr, int index);
 int main(void)
 {
   queen queens[8];
-  init(queens, 7, '8');
-  queens[0].col = 'h';
+  init(queens);
+  queens[0].col = 'b';
 
   for (int i = 0; i < 8; i++)
   {
@@ -37,18 +38,27 @@ int main(void)
   }
 }
 
-void init(queen *arr, int index, char row)
+void init_init(queen *arr, int index, char row)
 {
   if (arr && index >= 0)
   {
     arr[index].col = 'a';
     arr[index].row = row;
-    init(arr, index - 1, row - 1);
+    init_init(arr, index - 1, row - 1);
   }
   else
   {
     return;
   }
+}
+
+void init(queen *arr)
+{
+  if (!arr)
+  {
+    return;
+  }
+  init_init(arr, 7, '8');
 }
 
 int survey_cols(queen *arr, int index, int i)
