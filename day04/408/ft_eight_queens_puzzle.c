@@ -1,36 +1,25 @@
 #include <stdio.h>
 
-struct queen
+typedef struct queen
 {
   char col;
   char row;
-};
-typedef struct queen queen;
+} queen;
 
 void init_init(queen *arr, int index, char row);
 void init(queen *arr);
 int survey_cols(queen *arr, int index, int i);
 int survey_diagonals(queen *arr, int index, int i, char col, char row, int flp);
 int survey(queen *arr, int index);
+void survey_and_place(queen *arr, int index);
 
 int main(void)
 {
   queen queens[8];
   init(queens);
-  queens[0].col = 'b';
+  queens[0].col = 'h';
 
-  for (int i = 0; i < 8; i++)
-  {
-    while (!survey(queens, i))
-    {
-      if (queens[i].col == 'h')
-      {
-        queens[i].col = 'N';
-        break;
-      }
-      queens[i].col++;
-    }
-  }
+  survey_and_place(queens, 1);
 
   for (int i = 0; i < 8; i++)
   {
@@ -117,4 +106,21 @@ int survey(queen *arr, int index)
     &&
     survey_diagonals(arr, index, 0, arr[index].col - 1, arr[index].row - 1, -1)
   );
+}
+
+void survey_and_place(queen *arr, int index)
+{
+  if (!arr || index <= 0 || (!survey(arr, index) && arr[index].col == 'h'))
+  {
+    return;
+  }
+  else if (!survey(arr, index))
+  {
+    arr[index].col++;
+    survey_and_place(arr, index);
+  }
+  else
+  {
+    survey_and_place(arr, index + 1);
+  }
 }

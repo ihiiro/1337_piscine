@@ -14,6 +14,7 @@ survey() ... OK
  survey_cols() ... OK
  survey_diagonals() ... OK
 abstract init ... OK
+survey_and_place() ... SEEMS OK
  
 BEC
 
@@ -22,10 +23,10 @@ survey(queens, index, i)
  
 diagonal(queens, index, i, col, row)
  check current diagonal position against queens[0] to queens[index-1]
-
+ 
 -------------------
 START
- queen[0] <- a1
+ init board
  LOOP START
   if (row_unsafe)
    backtrack()
