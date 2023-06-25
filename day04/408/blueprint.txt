@@ -14,7 +14,7 @@ survey() ... OK
  survey_cols() ... OK
  survey_diagonals() ... OK
 abstract init ... OK
-survey_and_place() ... SEEMS OK
+survey_and_place() ... SEEMS_OK
  
 BEC
 
