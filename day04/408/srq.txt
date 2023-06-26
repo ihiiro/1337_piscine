@@ -1,3 +1,5 @@
+-> update 408 <-
+
 SRQ
 
 efficient data structure ... SEEMS_OK
@@ -6,6 +8,4 @@ survey() ... OK
  survey_cols() ... OK
  survey_diagonals() ... OK
 abstract init ... OK
-survey_and_place() ... OK
-
-TEST COMMIT
+survey_and_place() ... SEEMS_OK
