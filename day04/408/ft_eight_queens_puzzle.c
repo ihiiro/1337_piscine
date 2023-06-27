@@ -19,7 +19,7 @@ int main(void)
   init(queens);
   queens[0].col = 'a';
 
-  printf("%d\n\n", survey_and_place(queens, 1));
+  survey_and_place(queens, 1);
 
   for (int i = 0; i < 8; i++)
   {
@@ -116,7 +116,8 @@ int survey_and_place(queen *arr, int index)
   }
   else if (!survey(arr, index) && arr[index].col == 'h')
   {
-    return index;
+    arr[index].col = 'a';
+    return (index - 1);
   }
   else if (!survey(arr, index))
   {
