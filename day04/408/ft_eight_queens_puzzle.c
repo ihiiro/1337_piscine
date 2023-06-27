@@ -11,15 +11,15 @@ void init(queen *arr);
 int survey_cols(queen *arr, int index, int i);
 int survey_diagonals(queen *arr, int index, int i, char col, char row, int flp);
 int survey(queen *arr, int index);
-void survey_and_place(queen *arr, int index);
+int survey_and_place(queen *arr, int index);
 
 int main(void)
 {
   queen queens[8];
   init(queens);
-  queens[0].col = 'h';
+  queens[0].col = 'a';
 
-  survey_and_place(queens, 1);
+  printf("%d\n\n", survey_and_place(queens, 1));
 
   for (int i = 0; i < 8; i++)
   {
@@ -108,16 +108,24 @@ int survey(queen *arr, int index)
   );
 }
 
-void survey_and_place(queen *arr, int index)
+int survey_and_place(queen *arr, int index)
 {
-  if (!arr || index <= 0 || (!survey(arr, index) && arr[index].col == 'h'))
+  if (!arr || index <= 0)
   {
-    return;
+    return -1;
+  }
+  else if (!survey(arr, index) && arr[index].col == 'h')
+  {
+    return index;
   }
   else if (!survey(arr, index))
   {
     arr[index].col++;
     survey_and_place(arr, index);
+  }
+  else if (survey(arr, index) && index == 7)
+  {
+    return -2;
   }
   else
   {

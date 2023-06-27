@@ -9,3 +9,5 @@ survey() ... OK
  survey_diagonals() ... OK
 abstract init ... OK
 survey_and_place() ... SEEMS_OK
+ returns index if solution incomplete ... OK
+ 
