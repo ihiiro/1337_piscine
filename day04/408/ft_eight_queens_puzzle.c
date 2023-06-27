@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-typedef struct queen
+typedef struct
 {
   char col;
   char row;
@@ -17,9 +17,9 @@ int main(void)
 {
   queen queens[8];
   init(queens);
-  queens[0].col = 'a';
+  queens[0].col = 'b';
 
-  survey_and_place(queens, 1);
+  printf("%d\n\n", survey_and_place(queens, 1));
 
   for (int i = 0; i < 8; i++)
   {
@@ -29,7 +29,7 @@ int main(void)
 
 void init_init(queen *arr, int index, char row)
 {
-  if (arr && index >= 0)
+  if (arr && index >= 0 && index <= 7)
   {
     arr[index].col = 'a';
     arr[index].row = row;
@@ -52,7 +52,7 @@ void init(queen *arr)
 
 int survey_cols(queen *arr, int index, int i)
 {
-  if (!arr || index <= 0 || i < 0 || i > index)
+  if (!arr || index <= 0 || i < 0 || i > index || index > 7)
   {
     return -1;
   }
@@ -69,7 +69,7 @@ int survey_cols(queen *arr, int index, int i)
 
 int survey_diagonals(queen *arr, int index, int i, char col, char row, int flp)
 {
-  if (!arr || index <= 0 || i < 0 || i > index)
+  if (!arr || index <= 0 || i < 0 || i > index || index > 7)
   {
     return -1;
   }
@@ -97,7 +97,7 @@ int survey_diagonals(queen *arr, int index, int i, char col, char row, int flp)
 
 int survey(queen *arr, int index)
 {
-  if (!arr || index <= 0)
+  if (!arr || index <= 0 || index > 7)
   {
     return -1;
   }
@@ -110,7 +110,7 @@ int survey(queen *arr, int index)
 
 int survey_and_place(queen *arr, int index)
 {
-  if (!arr || index <= 0)
+  if (!arr || index <= 0 || index > 7)
   {
     return -1;
   }
