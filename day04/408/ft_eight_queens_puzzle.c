@@ -12,14 +12,15 @@ int survey_cols(queen *arr, int index, int i);
 int survey_diagonals(queen *arr, int index, int i, char col, char row, int flp);
 int survey(queen *arr, int index);
 int survey_and_place(queen *arr, int index);
+int backtrack(queen *arr, int index);
 
 int main(void)
 {
   queen queens[8];
   init(queens);
-  queens[0].col = 'b';
+  queens[0].col = 'h';
 
-  printf("%d\n\n", survey_and_place(queens, 1));
+  printf("%d\n\n", backtrack(queens, survey_and_place(queens, 1)));
 
   for (int i = 0; i < 8; i++)
   {
@@ -131,5 +132,27 @@ int survey_and_place(queen *arr, int index)
   else
   {
     survey_and_place(arr, index + 1);
+  }
+}
+
+int backtrack(queen *arr, int sap)
+{
+  if (sap == -2)
+  {
+    return 1;
+  }
+  else if (!arr || sap <= 0 || sap > 7)
+  {
+    return -1;
+  }
+  else if (arr[sap].col == 'h')
+  {
+    arr[sap].col = 'a';
+    backtrack(arr, sap - 1);
+  }
+  else
+  {
+    arr[sap].col++;
+    backtrack(arr, survey_and_place(arr, sap));
   }
 }
