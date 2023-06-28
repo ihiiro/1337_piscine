@@ -12,20 +12,20 @@ int survey_cols(queen *arr, int index, int i);
 int survey_diagonals(queen *arr, int index, int i, char col, char row, int flp);
 int survey(queen *arr, int index);
 int survey_and_place(queen *arr, int index);
-int backtrack(queen *arr, int index);
+int backtrack(queen *arr, int index, int count);
+void reset_rows(queen *arr, int start_index);
+int ft_eight_queens_puzzle(void);
 
 int main(void)
 {
+  printf("%d", ft_eight_queens_puzzle());
+}
+
+int ft_eight_queens_puzzle(void)
+{
   queen queens[8];
   init(queens);
-  queens[0].col = 'h';
-
-  printf("%d\n\n", backtrack(queens, survey_and_place(queens, 1)));
-
-  for (int i = 0; i < 8; i++)
-  {
-    printf("Q%c%c, ", queens[i].col, queens[i].row);
-  }
+  return backtrack(queens, survey_and_place(queens, 1), 0);
 }
 
 void init_init(queen *arr, int index, char row)
@@ -135,24 +135,44 @@ int survey_and_place(queen *arr, int index)
   }
 }
 
-int backtrack(queen *arr, int sap)
+int backtrack(queen *arr, int sap, int count)
 {
-  if (sap == -2)
+  if (arr[0].col > 'h')
   {
-    return 1;
+    return count;
   }
-  else if (!arr || sap <= 0 || sap > 7)
+  else if (sap == -2)
+  {
+    backtrack(arr, 7, count + 1);
+  }
+  else if (!arr || sap < 0 || sap > 7)
   {
     return -1;
+  }
+  else if (sap == 0)
+  {
+    reset_rows(arr, 1);
+    arr[sap].col++;
+    backtrack(arr, survey_and_place(arr, 1), count);
   }
   else if (arr[sap].col == 'h')
   {
     arr[sap].col = 'a';
-    backtrack(arr, sap - 1);
+    backtrack(arr, sap - 1, count);
   }
   else
   {
     arr[sap].col++;
-    backtrack(arr, survey_and_place(arr, sap));
+    backtrack(arr, survey_and_place(arr, sap), count);
   }
+}
+
+void reset_rows(queen *arr, int start_index)
+{
+  if (!arr || start_index <= 0 || start_index >= 7)
+  {
+    return;
+  }
+  arr[start_index].col = 'a';
+  reset_rows(arr, start_index + 1);
 }
